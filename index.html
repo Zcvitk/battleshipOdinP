@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="game-title">Battleship Game</h1>
+        
+        <div id="messages-container">
+            <div id="turn-display" class="message-stripe">Turn:</div>
+            <div id="info" class="message-stripe">Info:</div>
+        </div>
+        
+        <div id="gamesboard-container"></div>
+        
+        <div class="button-container">
+            <button id="flip-button">Flip ship</button>
+            <button id="start-button">Start Game</button>
+        </div>
+        
+        <div class="option-container">
+            <div id="0" class="destroyer-preview destroyer" draggable="true"></div>
+            <div id="1" class="submarine-preview submarine" draggable="true"></div>
+            <div id="2" class="cruiser-preview cruiser" draggable="true"></div>
+            <div id="3" class="battleship-preview battleship" draggable="true"></div>
+            <div id="4" class="carrier-preview carrier" draggable="true"></div>
+        </div>
+        
+        <script type="module" src="app_mod.js"></script>
+    </div>
+</body>
+</html>

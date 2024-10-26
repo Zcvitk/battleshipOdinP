@@ -1,0 +1,244 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-container {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-image: url('Ship_pic.jpg');
+}
+
+.main-container::before {
+    content: ''; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('Ship_pic.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(15px); 
+    animation: blurAnimation 15s infinite;
+    z-index: 0; 
+}
+
+.main-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+#messages-container {
+    width: 100%; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.message-stripe {
+    width: 100%; 
+    text-align: center; 
+    padding: 5px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(5px); 
+    color: white; 
+    font-size: 1em; 
+    margin: 3px 0; 
+}
+
+.game-title {
+    text-align: center; 
+    font-size: 2em; 
+    margin: 10px 0;
+    color: #000; 
+}
+
+#turn-display {
+    background-color: rgba(0, 128, 0, 0.7);
+}
+
+#info {
+    background-color: rgba(255, 165, 0, 0.7);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; 
+}
+
+#flip-button,
+#start-button {
+    width: 100%;
+    padding: 8px; 
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+#gamesboard-container {
+    width: 100%; 
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 20px;
+}
+
+.game-board {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
+
+.option-container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center; 
+    margin-top: 10px;
+}
+
+.option-container > div {
+    margin: 0 5px;
+}
+
+.destroyer-preview {
+    width: 20px;
+    height: 10px;
+    margin: 3px;
+}
+
+.submarine-preview {
+    width: 30px;
+    height: 10px;
+    margin: 3px;
+}
+
+.cruiser-preview {
+    width: 30px;
+    height: 10px;
+    margin: 3px;
+}
+
+.battleship-preview {
+    width: 40px;
+    height: 10px;
+    margin: 3px;
+}
+
+.carrier-preview {
+    width: 50px;
+    height: 10px;
+    margin: 3px;
+}
+
+.destroyer {
+    background-color: rgb(17, 5, 73);
+ 
+}
+
+.submarine {
+    background-color: green;
+}
+
+.cruiser {
+    background-color: purple;
+}
+
+.battleship {
+    background-color: orange;
+}
+
+.carrier {
+    background-color: rgb(63, 63, 204);
+}
+
+.hover {
+    background-color: rgb(94, 90, 90);
+}
+
+.boom {
+    background-color: red !important;
+}
+
+.empty {
+    background-color: grey !important;
+}
+
+.already-clicked {
+    background-color: red !important;
+}
+
+.computer {
+    background-color: rgba(255, 255, 255, 0.0);
+}
+
+@keyframes fire {
+    0% {
+        background-color: red;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        transform: translateY(-100px) scale(1);
+    }
+    70% {
+        background-color: orange;
+        box-shadow: 0 0 20px rgba(255, 165, 0, 0.7);
+        transform: translateY(0) scale(1.2);
+    }
+    80% {
+        background-color: yellow;
+        box-shadow: 0 0 40px rgba(255, 255, 0, 1);
+        transform: translateY(0) scale(1.3);
+    }
+    90% {
+        background-color: orange;
+        box-shadow: 0 0 25px rgba(255, 165, 0, 0.7);
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        background-color: yellow;
+        box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fire {
+    animation: fire 1.5s forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes blurAnimation {
+    80%, 90% {
+        filter: blur(15px);
+    }
+    60% {
+        filter: blur(0px);
+    }
+}
