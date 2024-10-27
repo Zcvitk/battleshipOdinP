@@ -123,6 +123,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
+    // drag and drop touch
+    const touchStartHandler = (e) => {
+        const touch = e.touches[0];
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (target && target.classList.contains('option-container')) {
+            draggedShip = target;
+        }
+    };
+    
+    const touchMoveHandler = (e) => {
+        if (!draggedShip) return;
+        const touch = e.touches[0];
+        const targetBlock = document.elementFromPoint(touch.clientX, touch.clientY);
+    
+        if (targetBlock && targetBlock.classList.contains('block')) {
+            highlightArea(targetBlock.id, ships[draggedShip.id]);
+        }
+    };
+    
+    const touchEndHandler = (e) => {
+        const targetBlock = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        if (targetBlock && targetBlock.classList.contains('block')) {
+            dropShip({ target: targetBlock });
+        }
+    };
+
+    optionShips.forEach(optionShip => {
+        optionShip.addEventListener('touchstart', touchStartHandler);
+        optionShip.addEventListener('touchmove', touchMoveHandler);
+        optionShip.addEventListener('touchend', touchEndHandler);
+    }); 
+
     function startGame() {
         if (!playerTurn) {
             if (optionContainer.children.length !== 0) {
