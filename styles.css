@@ -235,6 +235,10 @@ body {
     animation-iteration-count: 1;
 }
 
+.dragging {
+    opacity: 0.5;
+}
+
 @keyframes blurAnimation {
     80%, 90% {
         filter: blur(15px);
