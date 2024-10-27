@@ -144,14 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const touchEndHandler = (e) => {
-        if (!draggedShip) return;
         const targetBlock = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
         if (targetBlock && targetBlock.classList.contains('block')) {
             dropShip({ target: targetBlock });
         }
-        // Clear draggedShip and remove visual feedback
-        draggedShip.classList.remove('dragging');
-        draggedShip = null; 
     };
 
     optionShips.forEach(optionShip => {
@@ -326,5 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     }
 });
+
+
 
 
